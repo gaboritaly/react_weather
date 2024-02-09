@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Outfit", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url("assets/pexels-johannes-plenio-1118873.jpg") no-repeat center
+    center/cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+/* 
+  Page 
+*/
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+/* 
+  Ui components
+*/
+.button {
+  cursor: pointer;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4rem;
+  background-color: #f7a327;
+}
+
+.back-button {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid aquamarine;
+  border-right: 5px solid aquamarine;
+  border-left: none;
+  border-top: none;
+  border-radius: 0;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  background: none;
+  padding: 0;
+}
+
+.card {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.search-input {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #eee;
+  outline: none;
+  font-size: 1.4rem;
+}
+.search-input::placeholder {
+  opacity: 1;
+  color: black;
+  font-weight: 400;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  list-style-type: none;
+  cursor: pointer;
+}
+li p {
+  font-size: 2rem;
+  color: white;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+/* 
+  Other
+*/
+
+.clock {
+  font-size: 5rem;
+  color: white;
+  font-weight: 700;
+}
+.add-city {
+  font-size: 3rem;
+  color: aquamarine;
+  font-weight: 700;
+}
+.aquamarine {
+  color: aquamarine;
+}
+.orange {
+  color: rgb(255, 167, 0);
+}
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.highlight {
+  font-weight: 600;
+  color: aquamarine;
+}
+.width400 {
+  width: 400px;
+}

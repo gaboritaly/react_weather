@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  gap: 1rem;
+  width: 4rem;
+}
+.icon {
+  max-width: 24px;
+  width: 24px;
+}
