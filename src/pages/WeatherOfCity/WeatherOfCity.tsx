@@ -1,10 +1,9 @@
-import axios, { AxiosError } from "axios";
 import { FC, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { OpenWeather } from "../../types/OpenWeather";
 import Weather from "./components/Weather";
 import Clock from "./components/Clock";
-
+import weatherApi from "../../api/weatherApi";
 /**
  * WeatherOfCity page content component
  * Show a current time based on timezone
@@ -24,16 +23,13 @@ const WeatherOfCity: FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const loadCityByName = useCallback(async () => {
-    try {
-      const url = `${process.env.REACT_APP_API_URL}/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
-      const { data } = await axios.get<OpenWeather>(url);
-      setData(data);
-    } catch (error) {
-      let message = "Something went wrong! Please try again later";
-      if (error instanceof AxiosError) {
-        message = error?.response?.data?.message || "An error occurred";
+    if (city) {
+      const data = await weatherApi.getWeather(city);
+      if (data instanceof Error) {
+        setError(data.message);
+      } else {
+        setData(data);
       }
-      setError(message);
     }
   }, [city]);
 
@@ -43,7 +39,7 @@ const WeatherOfCity: FC = () => {
 
   return (
     <>
-      {error && <p>Error: {error}</p>}
+      {error && <p className="orange">Error: {error}</p>}
       {!error && !data && <p className="orange">Loading data</p>}
       {!error && data && (
         <>
