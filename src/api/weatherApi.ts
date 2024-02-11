@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { OpenWeather } from "../types/OpenWeather";
-
+// get the current weather of the selected city
 const getWeather = async (
   city: string | undefined
 ): Promise<OpenWeather | Error> => {
@@ -16,8 +16,11 @@ const getWeather = async (
     return new Error(message);
   }
 };
+/**
+ * All api call releated to wetaher must be here.
+ */
 const weatherApi = {
   getWeather,
 };
-export { getWeather };
+
 export default weatherApi;

@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { cityAdded, selectAllCities } from "../../features/cities/citiesSlice";
 import { AvailableCities } from "../../types/AvailableCities";
 import { useNavigate } from "react-router-dom";
-import CityList from "../../common/CityList";
 import HighlightedText from "./components/HighlightedText";
 import cities from "../../assets/cities.json";
 import Search from "./components/Search/Search";
@@ -11,6 +10,7 @@ import withoutSelectedItems from "./modifiers/withoutSelectedItems";
 import searchItems from "./modifiers/searchItems";
 import maxEightItems from "./modifiers/maxEightItems";
 import { paths } from "../../router/appRoutes";
+import List from "../../common/ui/List";
 
 /**
  * SearchCities page content component
@@ -49,7 +49,7 @@ const SearchCities: FC = () => {
 
   // Callback function for a List, when the city selected, apply current selected city, and input value
   const onCitySelected = useCallback(
-    (city: AvailableCities) => (_: React.MouseEvent<HTMLLIElement>) => {
+    (city: AvailableCities) => (event: React.MouseEvent<HTMLDivElement>) => {
       setSelectedCity(city);
       setInput(city.name);
     },
@@ -59,13 +59,15 @@ const SearchCities: FC = () => {
   // Callback function for a List, get the rendered item
   const renderItem = useCallback(
     (city: AvailableCities) => (
-      <HighlightedText
-        text={city.name}
-        wordToHighlight={input}
-        highlightClass="highlight"
-      />
+      <h3 onClick={onCitySelected(city)}>
+        <HighlightedText
+          text={city.name}
+          wordToHighlight={input}
+          highlightClass="highlight"
+        />
+      </h3>
     ),
-    [input]
+    [input, onCitySelected]
   );
 
   // Callback function for Search, when the search value changed
@@ -80,12 +82,11 @@ const SearchCities: FC = () => {
         onSearcChange={onSearcChange}
         addCity={addCity}
       />
-
-      <CityList
-        cities={availableCities}
-        onCitySelected={onCitySelected}
+      <List
+        items={availableCities}
         renderItem={renderItem}
-        className="width400"
+        ulClass="width400"
+        liClass="white"
       />
     </>
   );
