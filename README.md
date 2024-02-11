@@ -1,6 +1,8 @@
 # React Weather App
 
-### _Simple weather app, using routes, layout logic_
+### Simple weather app, using routes, layout logic, and redux.
+
+##### _Because it a small app, all the styles are in to index.css_
 
 ## ✨ Getting Started
 
@@ -15,7 +17,7 @@
 git clone https://github.com/gaboritaly/react_weather.git
 ```
 
-- Install the packages using the command `npm install`
+- Install the packages using the command `npm install` or `yarn install`
 - In the root of project you need to create .env file, and put there OpenWeatherMap base url, and the Api key
 
 ```bash
@@ -23,7 +25,7 @@ REACT_APP_API_URL = openweathermap_base_url
 REACT_APP_API_KEY = generated_api_key
 ```
 
-- Run the appliaction `npm install` after open [http://localhost:3000](http://localhost:3000) to view it in the browser
+- Run the appliaction `npm start` or `yarn start` after open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
 ## 📙 Used libraries
 
