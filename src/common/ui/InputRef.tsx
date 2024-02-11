@@ -20,9 +20,7 @@ interface InputProps
  */
 const InputRef = forwardRef<HTMLInputElement, InputProps>(
   ({ className = "", ...inputProps }: InputProps, ref) => {
-    return (
-      <input className={`input ${className}`} {...inputProps} ref={ref}></input>
-    );
+    return <input className={`${className}`} {...inputProps} ref={ref}></input>;
   }
 );
 

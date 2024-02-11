@@ -1,7 +1,8 @@
 import { FC, ChangeEvent, useEffect, useRef } from "react";
-import Button from "../../../common/ui/Button";
-import InputRef from "../../../common/ui/InputRef";
-import { AvailableCities } from "../../../types/AvailableCities";
+import Button from "../../../../common/ui/Button";
+import InputRef from "../../../../common/ui/InputRef";
+import { AvailableCities } from "../../../../types/AvailableCities";
+import classes from "./Search.module.css";
 
 type SearchProps = {
   city?: AvailableCities;
@@ -46,17 +47,22 @@ const Search: FC<SearchProps> = ({ city, onSearcChange, addCity }) => {
   }, [city]);
 
   return (
-    <>
+    <form className={`${classes.form} width400`} onSubmit={addCity}>
       <InputRef
         onChange={onSearcChange}
         placeholder="Plaese write the city name"
         type="text"
         ref={inputRef}
-        className="search-input width400"
+        className={`${classes.input}`}
+        disabled={city !== undefined}
       />
 
-      {city && <Button onClick={addCity}>Add city</Button>}
-    </>
+      {city && (
+        <Button type="submit" className={`button ${classes.button}`}>
+          Add city
+        </Button>
+      )}
+    </form>
   );
 };
 

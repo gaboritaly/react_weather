@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CityList from "../../common/CityList";
 import HighlightedText from "./components/HighlightedText";
 import cities from "../../assets/cities.json";
-import Search from "./components/Search";
+import Search from "./components/Search/Search";
 import withoutSelectedItems from "./modifiers/withoutSelectedItems";
 import searchItems from "./modifiers/searchItems";
 import maxEightItems from "./modifiers/maxEightItems";
