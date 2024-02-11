@@ -12,6 +12,17 @@ import searchItems from "./modifiers/searchItems";
 import maxEightItems from "./modifiers/maxEightItems";
 import { paths } from "../../router/appRoutes";
 
+/**
+ * SearchCities page content component
+ * Search and how the cities that found in cities.json
+ * Can add selected city of the cities store
+ *
+ * @component
+ * @returns {JSX.Element} The rendered SearchCities page content component.
+ *
+ * @example
+ * <SearchCities />;
+ */
 const SearchCities: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -20,19 +31,23 @@ const SearchCities: FC = () => {
 
   const [selectedCity, setSelectedCity] = useState<AvailableCities>();
 
+  // Get the saved citis list from redux
   const savedCities = useAppSelector(selectAllCities);
 
+  // Apply the modifiers to savedCities, and return a memoized value
   const availableCities = useMemo(() => {
     let currentCities = withoutSelectedItems(cities, savedCities);
     currentCities = searchItems(currentCities, input);
     return maxEightItems(currentCities);
   }, [input, savedCities]);
 
+  // Callback function for Search, when the city selected,navigate to home page
   const addCity = useCallback(() => {
     dispatch(cityAdded(selectedCity));
     navigate(paths.home);
   }, [dispatch, navigate, selectedCity]);
 
+  // Callback function for a List, when the city selected, apply current selected city, and input value
   const onCitySelected = useCallback(
     (city: AvailableCities) => (_: React.MouseEvent<HTMLLIElement>) => {
       setSelectedCity(city);
@@ -41,6 +56,7 @@ const SearchCities: FC = () => {
     []
   );
 
+  // Callback function for a List, get the rendered item
   const renderItem = useCallback(
     (city: AvailableCities) => (
       <HighlightedText
@@ -52,6 +68,7 @@ const SearchCities: FC = () => {
     [input]
   );
 
+  // Callback function for Search, when the search value changed
   const onSearcChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   }, []);

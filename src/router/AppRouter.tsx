@@ -1,7 +1,15 @@
 import { FC, Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routes } from "./appRoutes";
-
+/**
+ * Render all the routes with layout and components
+ *
+ * @component
+ * @returns {JSX.Element} The rendered AppRoutes component.
+ *
+ * @example
+ * <AppRoutes />
+ */
 const AppRoutes: FC = () => {
   return (
     <BrowserRouter>

@@ -14,8 +14,22 @@ dayjs.extend(utc);
 type WeatherProps = {
   data: OpenWeather;
 };
-
+/**
+ * Weather component
+ * Show the name of the OpenWeather data,
+ * Show temperature , sunrise, sunset based on timezone
+ * Show the weather Icon
+ *
+ * @component
+ * @param {OpenWeather} data - OpenWeather data
+ * @returns {JSX.Element} The rendered Weather component.
+ *
+ * @example
+ * const data = { name:"Budapest" , etc...} as OpenWeather;
+ * <Weather data={data} />
+ */
 const Weather: FC<WeatherProps> = ({ data }) => {
+  // calculate the time based on timezone
   const getUtcTime = useCallback((time: number, timeZone: number) => {
     return dayjs
       .utc(time * 1000)

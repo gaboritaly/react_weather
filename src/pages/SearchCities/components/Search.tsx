@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useEffect, useRef } from "react";
 import Button from "../../../common/ui/Button";
-import Input from "../../../common/ui/Input";
+import InputRef from "../../../common/ui/InputRef";
 import { AvailableCities } from "../../../types/AvailableCities";
 
 type SearchProps = {
@@ -10,7 +10,26 @@ type SearchProps = {
 };
 
 /**
+ * Search component
+ * Contain an input, that emmit the current written value, and if recive the city the add button will be visible
  *
+ * @component
+ * @param {AvailableCities} [city] - Selecetd city 
+ * @param {(event: ChangeEvent<HTMLInputElement>) => void} onSearcChange - Emmit the input value
+ * @param {() => void} addCity -Callaback for adding the city
+ * @returns {JSX.Element} The rendered Search component.
+ *
+ * @example
+ * const selectedCity = ...;
+ * <Search
+      city={selectedCity}
+      onSearcChange={(event: ChangeEvent<HTMLInputElement>) => {
+        // do something
+      }}
+      addCity={() => {
+        // do something
+      }}
+    />;
  */
 const Search: FC<SearchProps> = ({ city, onSearcChange, addCity }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -28,7 +47,7 @@ const Search: FC<SearchProps> = ({ city, onSearcChange, addCity }) => {
 
   return (
     <>
-      <Input
+      <InputRef
         onChange={onSearcChange}
         placeholder="Plaese write the city name"
         type="text"

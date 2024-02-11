@@ -7,6 +7,19 @@ dayjs.extend(utc);
 type ClockProps = {
   timeZone: number;
 };
+
+/**
+ * Clock component
+ * Show the current time based on timezone
+ *
+ * @component
+ * @param {number} timeZone - Timzone value
+ * @returns {JSX.Element} The rendered Clock component.
+ *
+ * @example
+ * const timezone = -1800;
+ * <Clock timezone={timezone} />
+ */
 const Clock: FC<ClockProps> = ({ timeZone }) => {
   const [time, setTime] = useState("");
 

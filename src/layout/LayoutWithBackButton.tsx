@@ -5,6 +5,18 @@ import { paths } from "../router/appRoutes";
 import Button from "../common/ui/Button";
 import { ChildrenProps } from "../types/ChildrenProps";
 
+/**
+ * Layout component, with back button
+ *
+ * @component
+ * @param {ReactNode} children - Any type what ReactNode include string|JSX.Element| etc..
+ * @returns {JSX.Element} The rendered LayoutWithBackButton component.
+ *
+ * @example
+ * <LayoutWithBackButton>
+      <CustomContent />
+  </LayoutWithBackButton>;
+ */
 const LayoutWithBackButton: FC<ChildrenProps> = ({ children }) => {
   return (
     <>

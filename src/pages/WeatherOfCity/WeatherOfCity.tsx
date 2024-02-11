@@ -1,10 +1,21 @@
 import axios, { AxiosError } from "axios";
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { OpenWeather } from "../../types/OpenWeather";
 import Weather from "./components/Weather";
 import Clock from "./components/Clock";
 
+/**
+ * WeatherOfCity page content component
+ * Show a current time based on timezone
+ * show the current weather datas, derived from openwetahermap
+ *
+ * @component
+ * @returns {JSX.Element} The rendered WeatherOfCity page content component.
+ *
+ * @example
+ * <WeatherOfCity />;
+ */
 const WeatherOfCity: FC = () => {
   const { city } = useParams<{ city: string }>();
 

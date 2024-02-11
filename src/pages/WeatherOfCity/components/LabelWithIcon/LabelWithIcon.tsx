@@ -5,6 +5,20 @@ type LabelWithIconProps = {
   label: string;
   icon: string;
 };
+/**
+ * LabelWithIcon component
+ * Show the icon with associated label
+ * This component using a custom component css
+ *
+ * @component
+ * @param {string} label - Label to show
+ * @param {string} src - Image content, can be an URL an SVG
+ * @returns {JSX.Element} The rendered LabelWithIcon component.
+ *
+ * @example
+ * const timezone = -1800;
+ * <LabelWithIcon timezone={label:'Nice',icon:'hhhtp://....'} />
+ */
 const LabelWithIcon: FC<LabelWithIconProps> = ({ label, icon }) => {
   return (
     <div className={`${classes.container}`}>
